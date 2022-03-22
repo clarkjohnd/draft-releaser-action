@@ -1,0 +1,28 @@
+# action.yml
+name: 'Draft Releaser Action'
+description: 'Check repository draft releases and release if possible'
+inputs:
+  release-days:
+    description: 'Minimum days required before releasing drafts'
+    required: true
+    default: "7"
+  exclude-labels:
+    description: 'Comma-seperated list of labels that if found, stop the auto-release'
+    required: true
+    default: "Documentation,Features,Bug Fixes"
+  all-labels:
+    description: 'Overrides exclude-labels and will release with all labels'
+    required: true
+    default: ""
+  dry-run:
+    description: 'Set a value to run as a dry-run'
+    required: true
+    default: ""
+runs:
+  using: 'docker'
+  image: 'clarkjohnd/autoreleaser:dev'
+  env:
+    RELEASE_DAYS: ${{ inputs.release-days }}
+    EXCLUDE_LABELS: ${{ inputs.exclude-labels }}
+    ALL_LABELS: ${{ inputs.all-labels }}
+    DRY_RUN: ${{ inputs.dry-run}}
