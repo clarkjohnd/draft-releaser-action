@@ -243,6 +243,8 @@ func main() {
 		}
 
 		// Finally delete the temp release
+		log.Print("Waiting 5 seconds")
+		time.Sleep(5 * time.Second)
 		log.Print("Deleting temporary draft release")
 		deleteTempLog, err := exec.Command(
 			"gh", "release", "delete", tempDraft, "-R", repoUrl, "--yes",
