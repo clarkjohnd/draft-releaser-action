@@ -20,7 +20,8 @@ inputs:
     default: ""
 runs:
   using: 'docker'
-  image: 'docker://clarkjohnd/autoreleaser:dev'
+  #image: 'docker://clarkjohnd/autoreleaser:dev'
+  image: "Dockerfile"
   env:
     RELEASE_DAYS: ${{ inputs.release-days }}
     EXCLUDE_LABELS: ${{ inputs.exclude-labels }}
